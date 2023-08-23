@@ -14,6 +14,7 @@ public class Client extends BaseEntity {
     private String companyName;
     private String clientContact;
     private String clientLocation;
+    private String clientEmail;
     private ClientGender clientGender;
 
 
@@ -72,6 +73,13 @@ public class Client extends BaseEntity {
         this.clientGender = clientGender;
     }
 
+    @Column(name="client_email")
+    public String getClientEmail() {
+        return clientEmail;
+    }
+    public void setClientEmail(String clientEmail) {
+        this.clientEmail = clientEmail;
+    }
 
     @Override
     public String toString() {
