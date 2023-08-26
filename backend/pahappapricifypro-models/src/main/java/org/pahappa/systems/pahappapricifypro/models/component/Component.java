@@ -11,28 +11,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "components")
 public class Component extends BaseEntity {
-    private String defaultComponentName;
-    private String additionalComponentName;
+
+    private String componentType;
     private double componentPrice;
     private String componentDescription;
     private Sector sector;
 
-    @Column(name = "default_component_name")
-    public String getDefaultComponentName() {
-        return defaultComponentName;
+    @Column(name = "component_type")
+    public String getComponentType() {
+        return componentType;
     }
 
-    public void setDefaultComponentName(String defaultComponentName) {
-        this.defaultComponentName = defaultComponentName;
-    }
-
-    @Column(name = "additional_component_name")
-    public String getAdditionalComponentName() {
-        return additionalComponentName;
-    }
-
-    public void setAdditionalComponentName(String additionalComponentName) {
-        this.additionalComponentName = additionalComponentName;
+    public void setComponentType(String componentType) {
+        this.componentType = componentType;
     }
 
     @Column(name = "component_price")

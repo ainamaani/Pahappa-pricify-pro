@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/pages/californiatemplate/template.xhtml">
+    <ui:define name="content">
+        <h:head>
+            <title>Sector Names</title>
+        </h:head>
+
+        <h:body>
+            <h:form>
+                <p:commandButton value="Add Sector" process="@this"
+                                 styleClass="ui-button-help" immediate="true"
+                                 actionListener="#{sectorDialog.show}">
+                    <f:setPropertyActionListener value="#{null}"
+                                                 target="#{sectorDialog.model}" />
+                    <p:ajax event="dialogReturn" listener="#{sectorBean.reloadFilterReset}" update="@form" />
+                </p:commandButton>
+
+                <p:dataGrid id="sectorsTable" columns="3" value="#{sectorBean.dataModels}" var="sector" emptyMessage="No sectors found."
+                            style="margin: 20px;">
+                    <p:panel style="text-align: center;">
+                        <p:outputLabel value="#{sector.sectorName}" style="font-size: 18px; font-weight: bold;" />
+                        <p:commandButton value="Add Component" process="@this"
+                                         styleClass="ui-button-help" immediate="true"
+                                         actionListener="#{componentDialog.show}">
+                            <f:setPropertyActionListener value="#{sector}"
+                                                         target="#{componentDialog.selectedSector}" />
+                            <p:ajax event="dialogReturn" listener="#{componentBean.reloadFilterReset}" />
+                        </p:commandButton>
+
+
+                    </p:panel>
+                </p:dataGrid>
+            </h:form>
+        </h:body>
+    </ui:define>
+</ui:composition>
